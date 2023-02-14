@@ -10,7 +10,7 @@ ARG APP_USER_ID=1000
 RUN useradd --home-dir /openedx --create-home --shell /bin/bash --uid ${APP_USER_ID} app
 USER ${APP_USER_ID}
 
-ARG DISCOVERY_REPOSITORY=https://github.com/edx/course-discovery.git
+ARG DISCOVERY_REPOSITORY={{ DISCOVERY_REPOSITORY }}
 ARG DISCOVERY_VERSION={{ OPENEDX_COMMON_VERSION }}
 RUN mkdir -p /openedx/discovery && \
     git clone $DISCOVERY_REPOSITORY --branch $DISCOVERY_VERSION --depth 1 /openedx/discovery
